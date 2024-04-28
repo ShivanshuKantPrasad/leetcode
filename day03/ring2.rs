@@ -11,7 +11,9 @@ impl Solution {
             return distance[ringIndex][keyIndex];
         }
         let mut res = std::i32::MAX;
-        for i in 0..ring.len() {
+        let nr = ring.len();
+        let mut i = 0;
+        while i < nr {
             if ring[i] == key[0] {
                 let mut dist = (ringIndex as i32 - i as i32).abs();
                 dist = dist.min(ring.len() as i32 - dist);
@@ -24,6 +26,7 @@ impl Solution {
                     };
                 res = res.min(foo);
             }
+            i += 1;
         }
         distance[ringIndex][keyIndex] = res;
         res
