@@ -3,17 +3,16 @@ impl Solution {
     pub fn min_steps(
         ringIndex: usize,
         keyIndex: usize,
-        ring: &String,
+        ring: &[u8],
         key: &[u8],
-        // distance: &mut Vec<Vec<i32>>,
         distance: &mut [[i32; 100]; 100],
     ) -> i32 {
         if distance[ringIndex][keyIndex] != -1 {
             return distance[ringIndex][keyIndex];
         }
         let mut res = std::i32::MAX;
-        for (i, x) in ring.chars().enumerate() {
-            if x == key[0] as char {
+        for i in 0..ring.len() {
+            if ring[i] == key[0] {
                 let mut dist = (ringIndex as i32 - i as i32).abs();
                 dist = dist.min(ring.len() as i32 - dist);
                 let foo = 1
@@ -32,7 +31,7 @@ impl Solution {
 
     pub fn find_rotate_steps(ring: String, key: String) -> i32 {
         let mut distance = [[-1; 100]; 100];
-        Self::min_steps(0, 0, &ring, &key.as_bytes(), &mut distance)
+        Self::min_steps(0, 0, &ring.as_bytes(), &key.as_bytes(), &mut distance)
     }
 }
 
