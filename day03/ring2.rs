@@ -1,34 +1,34 @@
 struct Solution;
 impl Solution {
     pub fn min_steps(
-        ringIndex: usize,
-        keyIndex: usize,
+        ring_index: usize,
+        key_index: usize,
         ring: &[u8],
         key: &[u8],
         distance: &mut [[i32; 100]; 100],
     ) -> i32 {
-        if distance[ringIndex][keyIndex] != -1 {
-            return distance[ringIndex][keyIndex];
+        if distance[ring_index][key_index] != -1 {
+            return distance[ring_index][key_index];
         }
         let mut res = std::i32::MAX;
         let nr = ring.len();
         let mut i = 0;
         while i < nr {
             if ring[i] == key[0] {
-                let mut dist = (ringIndex as i32 - i as i32).abs();
+                let mut dist = (ring_index as i32 - i as i32).abs();
                 dist = dist.min(ring.len() as i32 - dist);
                 let foo = 1
                     + dist
                     + if key.len() == 1 {
                         0
                     } else {
-                        Self::min_steps(i, keyIndex + 1, &ring, &key[1..], distance)
+                        Self::min_steps(i, key_index + 1, &ring, &key[1..], distance)
                     };
                 res = res.min(foo);
             }
             i += 1;
         }
-        distance[ringIndex][keyIndex] = res;
+        distance[ring_index][key_index] = res;
         res
     }
 
@@ -68,6 +68,10 @@ fn main() {
     println!(
         "{}",
         Solution::find_rotate_steps("y".to_string(), "y".to_string())
+    );
+    println!(
+        "{}",
+        Solution::find_rotate_steps("eh".to_string(), "h".to_string())
     );
     println!("{}", Solution::find_rotate_steps("dccjgocjnscdalkwrlzmsrhnprvvsvqjtqnzirtaasdeldiiokttozjfkwjghhaibtzkoepdvfkhxgmxwtwsrgiryzqljpsntjei".to_string(), "lsdsvjtj".to_string()));
     println!("{}", Solution::find_rotate_steps("zmgddxyivijgullayjbxlmcbirsgpaeqemefpshtehczznvqjaetausoagpkqjtewszqihnzevhbcgpmmtdbyesgxjulyzshnksc".to_string(), "yxebsleaklhkjlx".to_string()));

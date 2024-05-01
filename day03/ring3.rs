@@ -12,8 +12,8 @@ impl Solution {
                 x,
                 ring.iter()
                     .enumerate()
-                    .filter(|(i, c)| **c == x)
-                    .map(|(i, c)| i)
+                    .filter(|(_, c)| **c == x)
+                    .map(|(i, _)| i)
                     .collect(),
             );
         }
@@ -23,7 +23,7 @@ impl Solution {
                 let mut res = std::i32::MAX;
                 for &i in indices.get(&key[key_index]).unwrap().iter() {
                     let mut dist = (ring_index as i32 - i as i32).abs();
-                    dist = dist.min(ring.len() as i32 - dist);
+                    dist = dist.min(nr as i32 - dist);
                     let foo = 1
                         + dist
                         + if key_index == nk - 1 {
@@ -42,7 +42,7 @@ impl Solution {
         let mut res = std::i32::MAX;
         for &i in indices.get(&key[key_index]).unwrap().iter() {
             let mut dist = (ring_index as i32 - i as i32).abs();
-            dist = dist.min(ring.len() as i32 - dist);
+            dist = dist.min(nr as i32 - dist);
             let foo = 1 + dist + distance[i][key_index + 1];
             res = res.min(foo);
         }
@@ -51,7 +51,7 @@ impl Solution {
     }
 
     pub fn find_rotate_steps(ring: String, key: String) -> i32 {
-        let mut distance = [[-1; 100]; 100];
+        let mut distance = [[0; 100]; 100];
         let b = Self::min_steps_loop(&ring.as_bytes(), &key.as_bytes(), &mut distance);
         b
     }
@@ -87,6 +87,10 @@ fn main() {
     println!(
         "{}",
         Solution::find_rotate_steps("y".to_string(), "y".to_string())
+    );
+    println!(
+        "{}",
+        Solution::find_rotate_steps("eh".to_string(), "h".to_string())
     );
     println!("{}", Solution::find_rotate_steps("dccjgocjnscdalkwrlzmsrhnprvvsvqjtqnzirtaasdeldiiokttozjfkwjghhaibtzkoepdvfkhxgmxwtwsrgiryzqljpsntjei".to_string(), "lsdsvjtj".to_string()));
     println!("{}", Solution::find_rotate_steps("zmgddxyivijgullayjbxlmcbirsgpaeqemefpshtehczznvqjaetausoagpkqjtewszqihnzevhbcgpmmtdbyesgxjulyzshnksc".to_string(), "yxebsleaklhkjlx".to_string()));
