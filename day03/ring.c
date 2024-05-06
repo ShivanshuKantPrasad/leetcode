@@ -70,47 +70,55 @@ int min_steps_loop(char *ring, char *key) {
 }
 
 int main() {
+  volatile long long a = 0;
   for (int i = 0; i < 100; i++) {
-    min_steps_loop("godding", "gd");
-    min_steps_loop("godding", "godding");
-    min_steps_loop("abcde", "ade");
-    min_steps_loop("y", "y");
-    min_steps_loop("dccjgocjnscdalkwrlzmsrhnprvvsvqjtqnzirtaasdeldiiokttozjf"
+    a += min_steps_loop("godding", "gd");
+    a += min_steps_loop("godding", "godding");
+    a += min_steps_loop("abcde", "ade");
+    a += min_steps_loop("y", "y");
+    a += min_steps_loop(
+        "dccjgocjnscdalkwrlzmsrhnprvvsvqjtqnzirtaasdeldiiokttozjf"
 
-                   "kwjghhaibtzkoepdvfkhxgmxwtwsrgiryzqljpsntjei",
-                   "lsdsvjtj");
-    min_steps_loop("zmgddxyivijgullayjbxlmcbirsgpaeqemefpshtehczznvqjaetauso"
+        "kwjghhaibtzkoepdvfkhxgmxwtwsrgiryzqljpsntjei",
+        "lsdsvjtj");
+    a += min_steps_loop(
+        "zmgddxyivijgullayjbxlmcbirsgpaeqemefpshtehczznvqjaetauso"
 
-                   "agpkqjtewszqihnzevhbcgpmmtdbyesgxjulyzshnksc",
-                   "yxebsleaklhkjlx");
-    min_steps_loop("gyzhbpwtmixjdmozuctjctsvcdxtpbtaftuqqirabgmnibnanegqxivx"
+        "agpkqjtewszqihnzevhbcgpmmtdbyesgxjulyzshnksc",
+        "yxebsleaklhkjlx");
+    a += min_steps_loop(
+        "gyzhbpwtmixjdmozuctjctsvcdxtpbtaftuqqirabgmnibnanegqxivx"
 
-                   "ljloodnmmylisompbtccwksvxcdxoixgjibhkmsujdvx",
-                   "tihsvtysmktbjtjkcvirxbixbx");
-    min_steps_loop("cimrihxbkmotdfudkkrovdydtyamiqdsogsaffnvdqucwfdrtrppmsjs"
+        "ljloodnmmylisompbtccwksvxcdxoixgjibhkmsujdvx",
+        "tihsvtysmktbjtjkcvirxbixbx");
+    a += min_steps_loop(
+        "cimrihxbkmotdfudkkrovdydtyamiqdsogsaffnvdqucwfdrtrppmsjs"
 
-                   "mbekuxzltpktpzcuayjtowoyemlzggktxzkqzosenqgb",
-                   "dnkvlggcpqslgsbmnyiukfcglsgglvbqvoosetoktrtgezvbukxqsmie"
+        "mbekuxzltpktpzcuayjtowoyemlzggktxzkqzosenqgb",
+        "dnkvlggcpqslgsbmnyiukfcglsgglvbqvoosetoktrtgezvbukxqsmie"
 
-                   "foffbsgdoomhgfmqumsmmdspqckblzcawzupwagsmwii");
-    min_steps_loop("wmgzcptgkwwnezrymhqtxlpbavqpioymjqifbdiwtldfqgcycqlfjxlm"
+        "foffbsgdoomhgfmqumsmmdspqckblzcawzupwagsmwii");
+    a += min_steps_loop(
+        "wmgzcptgkwwnezrymhqtxlpbavqpioymjqifbdiwtldfqgcycqlfjxlm"
 
-                   "yeqtynjpxprzqelgecdqlrbayhmbvneyfoopwlhdkvzc",
-                   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        "yeqtynjpxprzqelgecdqlrbayhmbvneyfoopwlhdkvzc",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 
-                   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    min_steps_loop("dslgzxnzgjncgeofucxncbjwaehabidlohnklkcgsxugshlhgjsiqjwf"
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    a += min_steps_loop(
+        "dslgzxnzgjncgeofucxncbjwaehabidlohnklkcgsxugshlhgjsiqjwf"
 
-                   "xeignrgcfrshxnecfssmqxbcxdckfpodqazgoddkbmsh",
-                   "fxseifxczzcnhgscdgidkcqshfqbeigceaccszjzxgjghkjdkskjocoh"
+        "xeignrgcfrshxnecfssmqxbcxdckfpodqazgoddkbmsh",
+        "fxseifxczzcnhgscdgidkcqshfqbeigceaccszjzxgjghkjdkskjocoh"
 
-                   "phmsdxogxacklrcxcuaxdkscnkdkjajggqxhqkaumgcf");
-    min_steps_loop("qdwcejgziqiulnvnttdkywpbpywduevimnutnzlvfefsntqgdvfrqnfo"
+        "phmsdxogxacklrcxcuaxdkscnkdkjajggqxhqkaumgcf");
+    a += min_steps_loop(
+        "qdwcejgziqiulnvnttdkywpbpywduevimnutnzlvfefsntqgdvfrqnfo"
 
-                   "knvholqozccyhmdjbqizbuvbfafybfuqfdrosqlztazl",
-                   "vteilniztwdsoaunpzhztvdddelkndvrwlwctinneujuqkvkvgeeldlk"
+        "knvholqozccyhmdjbqizbuvbfafybfuqfdrosqlztazl",
+        "vteilniztwdsoaunpzhztvdddelkndvrwlwctinneujuqkvkvgeeldlk"
 
-                   "umnqbdzmnklgfortizljnrveczpynqyqqgffyqqunuqp");
+        "umnqbdzmnklgfortizljnrveczpynqyqqgffyqqunuqp");
   }
 
   printf("%d\n", min_steps_loop("godding", "gd"));
