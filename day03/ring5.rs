@@ -14,12 +14,12 @@ impl Solution {
             for j in 0..nr {
                 if ring[j] == ch {
                     indices[i][index] = j;
-                    index+=1;
+                    index += 1;
                 }
             }
         }
 
-        for key_index in (1..nk).rev(){
+        for key_index in (1..nk).rev() {
             let mut x = 0;
             while indices[(key[key_index - 1] - b'a') as usize][x] != 1000 {
                 let ring_index = indices[(key[key_index - 1] - b'a') as usize][x];
@@ -31,16 +31,20 @@ impl Solution {
                     let mut dist = (ring_index as i32 - char_index as i32).abs();
                     dist = dist.min(nr as i32 - dist);
 
-                    let foo =
-                        1 + dist +
-                        if key_index == nk - 1 { 0 } else {distance[char_index][key_index + 1]};
+                    let foo = 1
+                        + dist
+                        + if key_index == nk - 1 {
+                            0
+                        } else {
+                            distance[char_index][key_index + 1]
+                        };
 
                     res = res.min(foo);
-                    y+=1;
+                    y += 1;
                 }
                 distance[ring_index][key_index] = res;
 
-                x+=1;
+                x += 1;
             }
         }
 
@@ -50,18 +54,22 @@ impl Solution {
         let mut y = 0;
         while indices[(key[key_index] - b'a') as usize][y] != 1000 {
             let char_index = indices[(key[key_index] - b'a') as usize][y];
-            let mut dist = (ring_index as i32 - char_index as i32 ).abs();
+            let mut dist = (ring_index as i32 - char_index as i32).abs();
             dist = dist.min(nr as i32 - dist);
-            let foo = 1 + dist +
-                if key_index == nk - 1 { 0 } else { distance[char_index][key_index + 1] };
+            let foo = 1
+                + dist
+                + if key_index == nk - 1 {
+                    0
+                } else {
+                    distance[char_index][key_index + 1]
+                };
 
-            res = res.min( foo);
-            y+=1;
+            res = res.min(foo);
+            y += 1;
         }
         distance[0][0] = res;
         distance[0][0]
     }
-
 }
 
 fn main() {
