@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/minimum-number-of-operations-to-make-array-xor-equal-to-k/description/
+
 #include <stdio.h>
 int minOperations(int *nums, int numsSize, int k) {
   int xor = 0;
