@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/number-of-wonderful-substrings/description/
+
 #include <stdio.h>
 
 long long wonderfulSubstrings(char *word) {

@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/reverse-prefix-of-word/
+
 struct Solution;
 impl Solution {
     pub fn reverse_prefix(word: String, ch: char) -> String {

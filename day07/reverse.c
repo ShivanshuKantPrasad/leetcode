@@ -1,3 +1,6 @@
+/* https://leetcode.com/problems/reverse-prefix-of-word/
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 

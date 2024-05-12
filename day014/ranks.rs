@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/relative-ranks/description/
+
 struct Solution;
 impl Solution {
     pub fn find_relative_ranks(score: Vec<i32>) -> Vec<String> {
