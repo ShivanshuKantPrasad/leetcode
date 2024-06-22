@@ -19,7 +19,8 @@ impl Solution {
             .windows(minutes as usize)
             .map(|x| x.iter().sum())
             .max()
-            .unwrap_or(y.iter().sum());
+            .unwrap();
+        // .unwrap_or(y.iter().sum());
 
         max + x
     }
