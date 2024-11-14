@@ -2,15 +2,14 @@
 
 pub fn minimized_maximum(n: i32, quantities: Vec<i32>) -> i32 {
     fn can_distribute(n: i32, quantities: &[i32], max: u32) -> bool {
-        max != 0
-            && quantities
-                .iter()
-                .map(|quantity| (*quantity as u32).div_ceil(max))
-                .sum::<u32>()
-                <= n as u32
+        quantities
+            .iter()
+            .map(|quantity| (*quantity as u32).div_ceil(max))
+            .sum::<u32>()
+            <= n as u32
     }
 
-    let mut left = 0;
+    let mut left = 1;
     let mut right = *quantities.iter().max().unwrap();
 
     while left < right {
@@ -22,5 +21,5 @@ pub fn minimized_maximum(n: i32, quantities: Vec<i32>) -> i32 {
         }
     }
 
-    left as i32
+    left
 }
