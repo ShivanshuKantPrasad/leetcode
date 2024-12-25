@@ -29,29 +29,27 @@ pub fn largest_values(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
 
     let mut last_row = 0;
 
-    match root {
-        Some(root) => {
-            queue.push_back((root.clone(), 0));
-            res.push(i32::MIN);
-            while let Some((root, cur_row)) = queue.pop_front() {
-                let root = root.borrow();
-                if cur_row == last_row {
-                    res[cur_row] = res[cur_row].max(root.val);
-                } else {
-                    res.push(root.val);
-                    last_row = cur_row;
-                }
-                match &root.left {
-                    Some(left) => queue.push_back((left.clone(), cur_row + 1)),
-                    None => (),
-                }
-                match &root.right {
-                    Some(right) => queue.push_back((right.clone(), cur_row + 1)),
-                    None => (),
-                }
+    if let Some(root) = root {
+        queue.push_back((root.clone(), 0));
+        res.push(i32::MIN);
+        while let Some((root, cur_row)) = queue.pop_front() {
+            let root = root.borrow();
+            if cur_row == last_row {
+                res[cur_row] = res[cur_row].max(root.val);
+            } else {
+                res.push(root.val);
+                last_row = cur_row;
             }
-            res
+            if let Some(left) = &root.left {
+                queue.push_back((left.clone(), cur_row + 1))
+            }
+
+            if let Some(right) = &root.right {
+                queue.push_back((right.clone(), cur_row + 1))
+            }
         }
-        None => vec![],
+        res
+    } else {
+        vec![]
     }
 }
